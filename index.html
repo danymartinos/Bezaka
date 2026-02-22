@@ -64,18 +64,15 @@
     <!-- Header / Navigation -->
     <nav class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Adjusted height for mobile stacking and removed PDF button -->
             <div class="flex flex-col lg:flex-row justify-between items-center py-6 lg:h-32 gap-6">
                 <!-- Branding Area: Doubled Logos Only -->
                 <div class="flex items-center gap-6 lg:gap-10">
-                    <!-- Bezaka Logo Placeholder (h-20) -->
                     <img src="bezaka_logo.png" alt="Bezaka Logo" class="h-16 lg:h-20 w-auto" onerror="this.src='https://via.placeholder.com/80x80?text=Bezaka'">
                     <div class="h-12 lg:h-16 w-[1px] bg-gray-200"></div>
-                    <!-- Windsor Logo Placeholder (h-16) -->
                     <img src="windsor_logo.png" alt="Windsor Brokers Logo" class="h-12 lg:h-16 w-auto" onerror="this.src='https://via.placeholder.com/240x64?text=Windsor'">
                 </div>
 
-                <!-- Navigation links: Now visible on all screen sizes -->
+                <!-- Navigation links: Visible on all screen sizes -->
                 <div class="flex flex-wrap justify-center gap-4 lg:gap-8 text-[10px] lg:text-xs font-bold uppercase tracking-widest text-gray-400">
                     <a href="#summary" class="hover:text-blue-600 transition">Summary</a>
                     <a href="#team" class="hover:text-blue-600 transition">Team</a>
@@ -120,13 +117,13 @@
         </div>
 
         <div class="grid md:grid-cols-3 gap-12">
-            <!-- Aly -->
+            <!-- Lexi (Updated Name & File) -->
             <div class="flex flex-col items-center text-center">
                 <div class="mb-8 w-full">
-                    <img src="Aly_avatar.png" alt="Aly Avatar" class="w-full h-auto max-w-xs lg:max-w-sm mx-auto object-contain" onerror="this.src='https://via.placeholder.com/512x512?text=Aly+Avatar'">
+                    <img src="Lexi_avatar.png" alt="Lexi Avatar" class="w-full h-auto max-w-xs lg:max-w-sm mx-auto object-contain" onerror="this.src='https://via.placeholder.com/512x512?text=Lexi+Avatar'">
                 </div>
                 <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 card-hover w-full flex-grow">
-                    <h3 class="text-2xl font-bold mb-2 text-blue-900">Aly</h3>
+                    <h3 class="text-2xl font-bold mb-2 text-blue-900">Lexi</h3>
                     <p class="text-[10px] font-bold text-blue-500 uppercase tracking-[0.2em] mb-4">Customer Experience</p>
                     <p class="text-gray-500 text-sm leading-relaxed">
                         Responsible for delivering the front-facing chat window, ensuring a seamless customer journey to get the support they need efficiently.
@@ -148,13 +145,13 @@
                 </div>
             </div>
 
-            <!-- Gary -->
+            <!-- Jace (Updated Name & File) -->
             <div class="flex flex-col items-center text-center">
                 <div class="mb-8 w-full">
-                    <img src="Gary_avatar.png" alt="Gary Avatar" class="w-full h-auto max-w-xs lg:max-w-sm mx-auto object-contain" onerror="this.src='https://via.placeholder.com/512x512?text=Gary+Avatar'">
+                    <img src="Jace_avatar.png" alt="Jace Avatar" class="w-full h-auto max-w-xs lg:max-w-sm mx-auto object-contain" onerror="this.src='https://via.placeholder.com/512x512?text=Jace+Avatar'">
                 </div>
                 <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 card-hover w-full flex-grow">
-                    <h3 class="text-2xl font-bold mb-2 text-blue-900">Gary</h3>
+                    <h3 class="text-2xl font-bold mb-2 text-blue-900">Jace</h3>
                     <p class="text-[10px] font-bold text-blue-500 uppercase tracking-[0.2em] mb-4">Intelligence & Translation</p>
                     <p class="text-gray-500 text-sm leading-relaxed">
                         Manages language translation and the RAG knowledge feed to ensure relevant information is delivered instantly to global customers.
@@ -322,7 +319,7 @@
     <section id="architecture" class="bg-white py-20 px-4 border-y border-gray-100">
         <div class="max-w-6xl mx-auto text-center">
             <h2 class="text-2xl font-bold mb-4 uppercase tracking-wider text-gray-900">Technical Ecosystem</h2>
-            <p class="text-gray-500 text-sm font-light mb-16 uppercase tracking-widest">Architecture supporting Aly, Larry, and Gary</p>
+            <p class="text-gray-500 text-sm font-light mb-16 uppercase tracking-widest">Architecture supporting Lexi, Larry, and Jace</p>
             
             <!-- Overall Security Layer Wrapper -->
             <div class="relative p-6 lg:p-12 rounded-[2.5rem] lg:rounded-[4rem] border-4 border-dashed border-blue-100 bg-blue-50/30">
@@ -333,11 +330,11 @@
 
                 <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4 relative z-10">
                     
-                    <!-- Frontend: React -->
+                    <!-- Frontend: React (Lexi's Workspace) -->
                     <div class="w-full lg:w-1/4">
                         <div class="bg-white p-6 rounded-[2rem] border border-gray-200 flex flex-col items-center shadow-md">
                             <img src="React_logo.png" alt="React Logo" class="h-12 lg:h-16 mb-4 object-contain" onerror="this.src='https://via.placeholder.com/64x64?text=React'">
-                            <h4 class="font-bold text-gray-900 text-xs uppercase tracking-widest text-nowrap">Aly's Workspace</h4>
+                            <h4 class="font-bold text-gray-900 text-xs uppercase tracking-widest text-nowrap">Lexi's Workspace</h4>
                             <p class="text-[9px] text-gray-400 font-medium uppercase">Custom React Widget</p>
                         </div>
                     </div>
@@ -346,7 +343,7 @@
                         <i class="fas fa-arrow-right text-2xl"></i>
                     </div>
 
-                    <!-- AI Hub: Microsoft Azure + Bezaka Intelligence -->
+                    <!-- AI Hub: Microsoft Azure + Bezaka Intelligence (Jace's Core) -->
                     <div class="w-full lg:w-1/3">
                         <div class="bg-white p-8 lg:p-10 rounded-[2.5rem] lg:rounded-[3rem] shadow-xl border-2 border-blue-500/20 flex flex-col items-center relative overflow-hidden">
                             <div class="absolute -right-10 -bottom-10 w-24 h-24 bg-blue-50 rounded-full opacity-50"></div>
@@ -357,7 +354,7 @@
                                 <img src="bezaka_logo.png" alt="Bezaka Logo" class="h-12 lg:h-16 object-contain" onerror="this.src='https://via.placeholder.com/64x64?text=Bezaka'">
                             </div>
 
-                            <h4 class="font-black text-blue-900 text-base lg:text-lg mb-4 tracking-tight uppercase text-nowrap">Gary's AI Core</h4>
+                            <h4 class="font-black text-blue-900 text-base lg:text-lg mb-4 tracking-tight uppercase text-nowrap">Jace's AI Core</h4>
                             <p class="text-[8px] lg:text-[10px] text-blue-500 font-bold uppercase tracking-widest mb-6">Powered by Bezaka Intelligence</p>
                             
                             <div class="grid grid-cols-2 gap-2 lg:gap-3 w-full">
@@ -414,7 +411,7 @@
                         </li>
                         <li class="flex items-start gap-4">
                             <div class="mt-1 w-6 h-6 rounded-lg bg-blue-500 flex items-center justify-center flex-shrink-0"><i class="fas fa-check text-[10px]"></i></div>
-                            <span class="text-sm font-light text-blue-50">Response benchmarks for Aly's window design.</span>
+                            <span class="text-sm font-light text-blue-50">Response benchmarks for Lexi's window design.</span>
                         </li>
                     </ul>
                 </div>
@@ -427,9 +424,34 @@
                         </li>
                         <li class="flex items-start gap-4">
                             <div class="mt-1 w-6 h-6 rounded-lg bg-blue-500 flex items-center justify-center flex-shrink-0"><i class="fas fa-check text-[10px]"></i></div>
-                            <span class="text-sm font-light text-blue-50">Knowledge Base content for Gary's data feed.</span>
+                            <span class="text-sm font-light text-blue-50">Knowledge Base content for Jace's data feed.</span>
                         </li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Roadmap Section -->
+    <section id="roadmap" class="max-w-4xl mx-auto py-20 px-4 text-center">
+        <h2 class="text-2xl font-bold mb-16 uppercase tracking-widest text-gray-900">Strategic Roadmap</h2>
+        
+        <div class="space-y-12 relative step-line text-left">
+            <div class="flex gap-8 items-start relative">
+                <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 z-10 text-xs font-bold shadow-xl border-4 border-gray-50">1</div>
+                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 flex-grow">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="font-bold text-gray-900 tracking-tight uppercase">Phase 1: Team Launch (Current)</h4>
+                        <span class="text-[10px] bg-green-100 text-green-700 px-3 py-1 rounded-full font-bold uppercase tracking-widest text-nowrap">In Motion</span>
+                    </div>
+                    <p class="text-xs text-gray-500 font-light leading-relaxed">Focus on Lexi's widget deployment, Jace's knowledge training, and Larry's core Salesforce integration.</p>
+                </div>
+            </div>
+            <div class="flex gap-8 items-start relative opacity-40">
+                <div class="w-10 h-10 rounded-full bg-gray-200 text-gray-400 flex items-center justify-center flex-shrink-0 z-10 text-xs font-bold border-4 border-gray-50">2</div>
+                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 flex-grow text-nowrap">
+                    <h4 class="font-bold text-gray-600 mb-2 tracking-tight uppercase">Phase 2: CRM Mastery</h4>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed">Expanding Larry's integrations for deep account retrieval and automated fulfilling of customer requests.</p>
                 </div>
             </div>
         </div>
