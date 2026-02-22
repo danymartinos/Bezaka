@@ -46,7 +46,7 @@
         @media (max-width: 768px) { .step-line::before { display: none; } }
         
         @media print {
-            nav, button, footer { display: none !important; }
+            nav, footer { display: none !important; }
             .gradient-bg { 
                 background: #1e3a8a !important; 
                 color: white !important;
@@ -64,15 +64,19 @@
     <!-- Header / Navigation -->
     <nav class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-32 items-center">
+            <!-- Adjusted height for mobile stacking and removed PDF button -->
+            <div class="flex flex-col lg:flex-row justify-between items-center py-6 lg:h-32 gap-6">
                 <!-- Branding Area: Doubled Logos Only -->
-                <div class="flex items-center gap-10">
-                    <img src="bezaka_logo.png" alt="Bezaka Logo" class="h-20 w-auto" onerror="this.src='https://via.placeholder.com/80x80?text=Bezaka'">
-                    <div class="h-16 w-[1px] bg-gray-200"></div>
-                    <img src="windsor_logo.png" alt="Windsor Brokers Logo" class="h-16 w-auto" onerror="this.src='https://via.placeholder.com/240x64?text=Windsor'">
+                <div class="flex items-center gap-6 lg:gap-10">
+                    <!-- Bezaka Logo Placeholder (h-20) -->
+                    <img src="bezaka_logo.png" alt="Bezaka Logo" class="h-16 lg:h-20 w-auto" onerror="this.src='https://via.placeholder.com/80x80?text=Bezaka'">
+                    <div class="h-12 lg:h-16 w-[1px] bg-gray-200"></div>
+                    <!-- Windsor Logo Placeholder (h-16) -->
+                    <img src="windsor_logo.png" alt="Windsor Brokers Logo" class="h-12 lg:h-16 w-auto" onerror="this.src='https://via.placeholder.com/240x64?text=Windsor'">
                 </div>
 
-                <div class="hidden lg:flex space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
+                <!-- Navigation links: Now visible on all screen sizes -->
+                <div class="flex flex-wrap justify-center gap-4 lg:gap-8 text-[10px] lg:text-xs font-bold uppercase tracking-widest text-gray-400">
                     <a href="#summary" class="hover:text-blue-600 transition">Summary</a>
                     <a href="#team" class="hover:text-blue-600 transition">Team</a>
                     <a href="#deliverables" class="hover:text-blue-600 transition text-nowrap">Project Scope</a>
@@ -80,33 +84,29 @@
                     <a href="#architecture" class="hover:text-blue-600 transition">Architecture</a>
                     <a href="#rfi" class="hover:text-blue-600 transition">RFI</a>
                 </div>
-
-                <button onclick="handleExportPDF()" class="bg-blue-600 text-white px-5 py-2.5 rounded-full text-xs font-bold hover:bg-blue-700 shadow-lg transition">
-                    <i class="fas fa-file-pdf mr-2"></i> EXPORT PDF
-                </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header id="summary" class="gradient-bg text-white py-24 px-4 overflow-hidden relative">
+    <header id="summary" class="gradient-bg text-white py-16 lg:py-24 px-4 overflow-hidden relative">
         <div class="max-w-4xl mx-auto text-center relative z-10">
             <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-[10px] font-bold tracking-widest uppercase mb-6 text-white">Strategic Client Proposal</span>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">AI-Driven Support Augmentation for Windsor Brokers</h1>
-            <p class="text-lg md:text-xl text-blue-100 mb-12 font-light max-w-2xl mx-auto">
+            <h1 class="text-3xl lg:text-6xl font-bold mb-6 leading-tight">AI-Driven Support Augmentation for Windsor Brokers</h1>
+            <p class="text-base lg:text-xl text-blue-100 mb-12 font-light max-w-2xl mx-auto">
                 Introducing a specialized AI architecture and team to maintain Windsor's gold-standard responsiveness globally.
             </p>
             
-            <div class="flex flex-wrap justify-center gap-6">
-                <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10 w-40 text-center text-nowrap">
-                    <i class="fas fa-globe text-2xl text-blue-200 mb-2"></i>
-                    <div class="text-[9px] text-blue-200 uppercase font-bold mb-1 tracking-wider">Multi-Entity</div>
-                    <div class="font-bold text-sm text-white">Global Support</div>
+            <div class="flex flex-wrap justify-center gap-4 lg:gap-6">
+                <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10 w-36 lg:w-40 text-center">
+                    <i class="fas fa-globe text-xl lg:text-2xl text-blue-200 mb-2"></i>
+                    <div class="text-[8px] lg:text-[9px] text-blue-200 uppercase font-bold mb-1 tracking-wider">Multi-Entity</div>
+                    <div class="font-bold text-xs lg:text-sm text-white">Global Support</div>
                 </div>
-                <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10 w-40 text-center text-nowrap">
-                    <i class="fas fa-bolt text-2xl text-blue-200 mb-2"></i>
-                    <div class="text-[9px] text-blue-200 uppercase font-bold mb-1 tracking-wider">KPI Targeted</div>
-                    <div class="font-bold text-sm text-white">Instant Response</div>
+                <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10 w-36 lg:w-40 text-center">
+                    <i class="fas fa-bolt text-xl lg:text-2xl text-blue-200 mb-2"></i>
+                    <div class="text-[8px] lg:text-[9px] text-blue-200 uppercase font-bold mb-1 tracking-wider">KPI Targeted</div>
+                    <div class="font-bold text-xs lg:text-sm text-white">Instant Response</div>
                 </div>
             </div>
         </div>
@@ -123,7 +123,7 @@
             <!-- Aly -->
             <div class="flex flex-col items-center text-center">
                 <div class="mb-8 w-full">
-                    <img src="Aly_avatar.png" alt="Aly Avatar" class="w-full h-auto max-w-sm mx-auto object-contain" onerror="this.src='https://via.placeholder.com/512x512?text=Aly+Avatar'">
+                    <img src="Aly_avatar.png" alt="Aly Avatar" class="w-full h-auto max-w-xs lg:max-w-sm mx-auto object-contain" onerror="this.src='https://via.placeholder.com/512x512?text=Aly+Avatar'">
                 </div>
                 <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 card-hover w-full flex-grow">
                     <h3 class="text-2xl font-bold mb-2 text-blue-900">Aly</h3>
@@ -137,7 +137,7 @@
             <!-- Larry -->
             <div class="flex flex-col items-center text-center">
                 <div class="mb-8 w-full">
-                    <img src="Larry_avatar.png" alt="Larry Avatar" class="w-full h-auto max-w-sm mx-auto object-contain" onerror="this.src='https://via.placeholder.com/512x512?text=Larry+Avatar'">
+                    <img src="Larry_avatar.png" alt="Larry Avatar" class="w-full h-auto max-w-xs lg:max-w-sm mx-auto object-contain" onerror="this.src='https://via.placeholder.com/512x512?text=Larry+Avatar'">
                 </div>
                 <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 card-hover w-full flex-grow">
                     <h3 class="text-2xl font-bold mb-2 text-blue-900">Larry</h3>
@@ -151,7 +151,7 @@
             <!-- Gary -->
             <div class="flex flex-col items-center text-center">
                 <div class="mb-8 w-full">
-                    <img src="Gary_avatar.png" alt="Gary Avatar" class="w-full h-auto max-w-sm mx-auto object-contain" onerror="this.src='https://via.placeholder.com/512x512?text=Gary+Avatar'">
+                    <img src="Gary_avatar.png" alt="Gary Avatar" class="w-full h-auto max-w-xs lg:max-w-sm mx-auto object-contain" onerror="this.src='https://via.placeholder.com/512x512?text=Gary+Avatar'">
                 </div>
                 <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 card-hover w-full flex-grow">
                     <h3 class="text-2xl font-bold mb-2 text-blue-900">Gary</h3>
@@ -209,7 +209,7 @@
                     <i class="fas fa-language text-6xl text-blue-900"></i>
                 </div>
                 <h4 class="text-xs font-black text-blue-500 uppercase tracking-[0.2em] mb-4">Module 2</h4>
-                <h3 class="text-xl font-bold text-blue-900 mb-6">Multilingual Add-on (Microsoft Translator)</h3>
+                <h3 class="text-xl font-bold text-blue-900 mb-6 text-nowrap">Multilingual Add-on</h3>
                 <ul class="space-y-6">
                     <li class="flex gap-4">
                         <i class="fas fa-sync-alt text-blue-400 mt-1"></i>
@@ -232,7 +232,7 @@
                     <i class="fas fa-brain text-6xl text-blue-900"></i>
                 </div>
                 <h4 class="text-xs font-black text-blue-500 uppercase tracking-[0.2em] mb-4">Module 3</h4>
-                <h3 class="text-xl font-bold text-blue-900 mb-6">AI Knowledgebase (Bezaka AI)</h3>
+                <h3 class="text-xl font-bold text-blue-900 mb-6 text-nowrap">AI Knowledgebase</h3>
                 <ul class="space-y-6">
                     <li class="flex gap-4">
                         <i class="fas fa-robot text-blue-400 mt-1"></i>
@@ -256,60 +256,60 @@
         <div class="text-center mb-16">
             <h2 class="text-3xl font-bold mb-4 uppercase tracking-wider text-gray-900">Project Phasing & Timeline</h2>
             <p class="text-gray-500 text-sm font-light max-w-2xl mx-auto leading-relaxed">
-                The project is structured into three incremental modules over a <span class="font-bold text-blue-600">12-week period</span>. Windsor Brokers may elect to proceed with subsequent modules upon successful completion of the preceding phase.
+                The project is structured into three incremental modules over a <span class="font-bold text-blue-600">12-week period</span>.
             </p>
         </div>
 
         <div class="max-w-4xl mx-auto">
             <div class="bg-white rounded-[3rem] shadow-xl overflow-hidden border border-gray-100">
                 <div class="gradient-bg px-10 py-6 text-white flex justify-between items-center">
-                    <h3 class="font-bold uppercase tracking-widest text-sm">Implementation Schedule</h3>
-                    <span class="bg-white/20 px-4 py-1 rounded-full text-xs font-black uppercase">Total: 12 Weeks</span>
+                    <h3 class="font-bold uppercase tracking-widest text-xs">Implementation Schedule</h3>
+                    <span class="bg-white/20 px-4 py-1 rounded-full text-[10px] font-black uppercase">Total: 12 Weeks</span>
                 </div>
-                <div class="p-10">
+                <div class="p-6 lg:p-10">
                     <table class="w-full text-left border-collapse">
                         <thead>
                             <tr class="border-b-2 border-gray-50">
-                                <th class="py-4 text-xs font-black text-gray-400 uppercase tracking-widest">Module</th>
-                                <th class="py-4 text-xs font-black text-gray-400 uppercase tracking-widest text-right">Duration</th>
+                                <th class="py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Module</th>
+                                <th class="py-4 text-[10px] font-black text-gray-400 uppercase tracking-widest text-right">Duration</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="border-b border-gray-50 group hover:bg-gray-50 transition">
                                 <td class="py-6">
                                     <div class="flex items-center gap-4">
-                                        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">1</div>
+                                        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold flex-shrink-0">1</div>
                                         <div>
-                                            <div class="font-bold text-gray-900">Base Live Chat</div>
-                                            <div class="text-[10px] text-gray-400 uppercase font-medium">React UI & Azure Infrastructure</div>
+                                            <div class="font-bold text-xs lg:text-sm text-gray-900">Base Live Chat</div>
+                                            <div class="text-[8px] lg:text-[10px] text-gray-400 uppercase font-medium">React UI & Azure Infrastructure</div>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="py-6 text-right font-black text-blue-900">5 Weeks</td>
+                                <td class="py-6 text-right font-black text-blue-900 text-xs lg:text-sm">5 Weeks</td>
                             </tr>
                             <tr class="border-b border-gray-50 group hover:bg-gray-50 transition">
                                 <td class="py-6">
                                     <div class="flex items-center gap-4">
-                                        <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold">2</div>
+                                        <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold flex-shrink-0">2</div>
                                         <div>
-                                            <div class="font-bold text-gray-900">Multilingual Add-on</div>
-                                            <div class="text-[10px] text-gray-400 uppercase font-medium">Farsi & Malaysian API Integration</div>
+                                            <div class="font-bold text-xs lg:text-sm text-gray-900">Multilingual Add-on</div>
+                                            <div class="text-[8px] lg:text-[10px] text-gray-400 uppercase font-medium">Farsi & Malaysian API Integration</div>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="py-6 text-right font-black text-blue-900">2 Weeks</td>
+                                <td class="py-6 text-right font-black text-blue-900 text-xs lg:text-sm">2 Weeks</td>
                             </tr>
                             <tr class="border-b border-gray-50 group hover:bg-gray-50 transition">
                                 <td class="py-6">
                                     <div class="flex items-center gap-4">
-                                        <div class="w-10 h-10 rounded-xl bg-green-50 text-green-600 flex items-center justify-center font-bold">3</div>
+                                        <div class="w-10 h-10 rounded-xl bg-green-50 text-green-600 flex items-center justify-center font-bold flex-shrink-0">3</div>
                                         <div>
-                                            <div class="font-bold text-gray-900">Bezaka AI Integration</div>
-                                            <div class="text-[10px] text-gray-400 uppercase font-medium">Automated Knowledge & Escalation</div>
+                                            <div class="font-bold text-xs lg:text-sm text-gray-900 text-nowrap">Bezaka AI Integration</div>
+                                            <div class="text-[8px] lg:text-[10px] text-gray-400 uppercase font-medium">Automated Knowledge & Escalation</div>
                                         </div>
                                     </div>
                                 </td>
-                                <td class="py-6 text-right font-black text-blue-900">5 Weeks</td>
+                                <td class="py-6 text-right font-black text-blue-900 text-xs lg:text-sm">5 Weeks</td>
                             </tr>
                         </tbody>
                     </table>
@@ -325,19 +325,19 @@
             <p class="text-gray-500 text-sm font-light mb-16 uppercase tracking-widest">Architecture supporting Aly, Larry, and Gary</p>
             
             <!-- Overall Security Layer Wrapper -->
-            <div class="relative p-8 lg:p-12 rounded-[4rem] border-4 border-dashed border-blue-100 bg-blue-50/30">
+            <div class="relative p-6 lg:p-12 rounded-[2.5rem] lg:rounded-[4rem] border-4 border-dashed border-blue-100 bg-blue-50/30">
                 <!-- Security Label -->
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.3em] shadow-lg z-20">
-                    <i class="fas fa-shield-alt mr-2"></i> Larry's Integrated Security Layer
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white px-4 lg:px-6 py-2 rounded-full text-[8px] lg:text-[10px] font-black uppercase tracking-[0.3em] shadow-lg z-20 text-nowrap">
+                    <i class="fas fa-shield-alt mr-2"></i> Larry's Security Layer
                 </div>
 
                 <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4 relative z-10">
                     
                     <!-- Frontend: React -->
                     <div class="w-full lg:w-1/4">
-                        <div class="bg-white p-8 rounded-[2rem] border border-gray-200 flex flex-col items-center shadow-md">
-                            <img src="React_logo.png" alt="React Logo" class="h-16 mb-4 object-contain" onerror="this.src='https://via.placeholder.com/64x64?text=React'">
-                            <h4 class="font-bold text-gray-900 text-sm mb-1 uppercase tracking-widest text-nowrap">Aly's Workspace</h4>
+                        <div class="bg-white p-6 rounded-[2rem] border border-gray-200 flex flex-col items-center shadow-md">
+                            <img src="React_logo.png" alt="React Logo" class="h-12 lg:h-16 mb-4 object-contain" onerror="this.src='https://via.placeholder.com/64x64?text=React'">
+                            <h4 class="font-bold text-gray-900 text-xs uppercase tracking-widest text-nowrap">Aly's Workspace</h4>
                             <p class="text-[9px] text-gray-400 font-medium uppercase">Custom React Widget</p>
                         </div>
                     </div>
@@ -348,21 +348,21 @@
 
                     <!-- AI Hub: Microsoft Azure + Bezaka Intelligence -->
                     <div class="w-full lg:w-1/3">
-                        <div class="bg-white p-10 rounded-[3rem] shadow-xl border-2 border-blue-500/20 flex flex-col items-center relative overflow-hidden">
+                        <div class="bg-white p-8 lg:p-10 rounded-[2.5rem] lg:rounded-[3rem] shadow-xl border-2 border-blue-500/20 flex flex-col items-center relative overflow-hidden">
                             <div class="absolute -right-10 -bottom-10 w-24 h-24 bg-blue-50 rounded-full opacity-50"></div>
                             
-                            <div class="flex items-center gap-4 mb-8">
-                                <img src="Azure_logo.png" alt="Microsoft Azure Logo" class="h-16 object-contain" onerror="this.src='https://via.placeholder.com/64x64?text=Azure'">
+                            <div class="flex items-center gap-4 mb-6">
+                                <img src="Azure_logo.png" alt="Microsoft Azure Logo" class="h-12 lg:h-16 object-contain" onerror="this.src='https://via.placeholder.com/64x64?text=Azure'">
                                 <div class="h-12 w-[2px] bg-gray-100"></div>
-                                <img src="bezaka_logo.png" alt="Bezaka Logo" class="h-16 object-contain" onerror="this.src='https://via.placeholder.com/64x64?text=Bezaka'">
+                                <img src="bezaka_logo.png" alt="Bezaka Logo" class="h-12 lg:h-16 object-contain" onerror="this.src='https://via.placeholder.com/64x64?text=Bezaka'">
                             </div>
 
-                            <h4 class="font-black text-blue-900 text-lg mb-4 tracking-tight text-nowrap uppercase text-nowrap">Gary's AI Core</h4>
-                            <p class="text-[10px] text-blue-500 font-bold uppercase tracking-widest mb-6">Powered by Bezaka Intelligence</p>
+                            <h4 class="font-black text-blue-900 text-base lg:text-lg mb-4 tracking-tight uppercase text-nowrap">Gary's AI Core</h4>
+                            <p class="text-[8px] lg:text-[10px] text-blue-500 font-bold uppercase tracking-widest mb-6">Powered by Bezaka Intelligence</p>
                             
-                            <div class="grid grid-cols-2 gap-3 w-full">
-                                <div class="bg-blue-50 py-2 rounded-xl text-[10px] font-bold text-blue-600 uppercase border border-blue-100">RAG Engine</div>
-                                <div class="bg-blue-50 py-2 rounded-xl text-[10px] font-bold text-blue-600 uppercase border border-blue-100">Translation</div>
+                            <div class="grid grid-cols-2 gap-2 lg:gap-3 w-full">
+                                <div class="bg-blue-50 py-2 rounded-xl text-[8px] lg:text-[10px] font-bold text-blue-600 uppercase border border-blue-100">RAG Engine</div>
+                                <div class="bg-blue-50 py-2 rounded-xl text-[8px] lg:text-[10px] font-bold text-blue-600 uppercase border border-blue-100">Translation</div>
                             </div>
                         </div>
                     </div>
@@ -374,18 +374,18 @@
                     <!-- Backend: Salesforce Integration -->
                     <div class="w-full lg:w-1/4 space-y-4">
                         <div class="bg-white p-6 rounded-[2rem] border border-gray-200 flex items-center gap-4 shadow-md">
-                            <img src="Salesforce_logo.png" alt="Salesforce Logo" class="h-10 w-16 object-contain" onerror="this.src='https://via.placeholder.com/64x40?text=SF'">
+                            <img src="Salesforce_logo.png" alt="Salesforce Logo" class="h-8 lg:h-10 w-16 object-contain" onerror="this.src='https://via.placeholder.com/64x40?text=SF'">
                             <div class="text-left">
-                                <h4 class="font-bold text-gray-900 text-xs uppercase tracking-widest text-nowrap">Larry's Bridge</h4>
+                                <h4 class="font-bold text-gray-900 text-[10px] lg:text-xs uppercase tracking-widest text-nowrap">Larry's Bridge</h4>
                                 <p class="text-[9px] text-gray-400">Salesforce Integration</p>
                             </div>
                         </div>
                         <div class="bg-white p-6 rounded-[2rem] border border-gray-200 flex items-center gap-4 shadow-md">
-                            <div class="h-10 w-16 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 border border-blue-100">
+                            <div class="h-8 lg:h-10 w-16 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 border border-blue-100">
                                 <i class="fas fa-shield-alt text-xl"></i>
                             </div>
                             <div class="text-left text-nowrap">
-                                <h4 class="font-bold text-gray-900 text-xs uppercase tracking-widest">Data Guard</h4>
+                                <h4 class="font-bold text-gray-900 text-[10px] lg:text-xs uppercase tracking-widest">Data Guard</h4>
                                 <p class="text-[9px] text-gray-400">Encrypted Layer</p>
                             </div>
                         </div>
@@ -401,13 +401,13 @@
         <div class="bg-[#1e3a8a] rounded-[3rem] p-10 md:p-16 text-white relative overflow-hidden shadow-2xl">
             <div class="absolute right-0 top-0 w-64 h-64 bg-blue-500 opacity-20 rounded-full blur-3xl -mr-20 -mt-20"></div>
             
-            <h2 class="text-3xl font-bold mb-4 uppercase">Request for Information (RFI)</h2>
+            <h2 class="text-2xl lg:text-3xl font-bold mb-4 uppercase">Request for Information (RFI)</h2>
             <p class="text-blue-200 mb-12 text-sm max-w-xl font-light leading-relaxed">Inputs needed to empower our team and technical architecture.</p>
             
             <div class="grid md:grid-cols-2 gap-12 text-left border-t border-white/10 pt-10">
                 <div class="space-y-8">
                     <h4 class="text-blue-300 text-[11px] font-black uppercase tracking-[0.3em] pb-3 text-nowrap">Volume & Performance</h4>
-                    <ul class="space-y-5 text-nowrap">
+                    <ul class="space-y-5">
                         <li class="flex items-start gap-4">
                             <div class="mt-1 w-6 h-6 rounded-lg bg-blue-500 flex items-center justify-center flex-shrink-0"><i class="fas fa-check text-[10px]"></i></div>
                             <span class="text-sm font-light text-blue-50">Peak/average hourly chat volumes for scaling.</span>
@@ -420,7 +420,7 @@
                 </div>
                 <div class="space-y-8">
                     <h4 class="text-blue-300 text-[11px] font-black uppercase tracking-[0.3em] pb-3 text-nowrap">Security & Data</h4>
-                    <ul class="space-y-5 text-nowrap">
+                    <ul class="space-y-5">
                         <li class="flex items-start gap-4">
                             <div class="mt-1 w-6 h-6 rounded-lg bg-blue-500 flex items-center justify-center flex-shrink-0"><i class="fas fa-check text-[10px]"></i></div>
                             <span class="text-sm font-light text-blue-50">Auth specs for Larry's security protocols.</span>
@@ -435,35 +435,10 @@
         </div>
     </section>
 
-    <!-- Roadmap Section -->
-    <section id="roadmap" class="max-w-4xl mx-auto py-20 px-4 text-center">
-        <h2 class="text-2xl font-bold mb-16 uppercase tracking-widest text-gray-900">Strategic Roadmap</h2>
-        
-        <div class="space-y-12 relative step-line text-left">
-            <div class="flex gap-8 items-start relative">
-                <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 z-10 text-xs font-bold shadow-xl border-4 border-gray-50">1</div>
-                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 flex-grow">
-                    <div class="flex justify-between items-center mb-4">
-                        <h4 class="font-bold text-gray-900 tracking-tight uppercase">Phase 1: Team Launch (Current)</h4>
-                        <span class="text-[10px] bg-green-100 text-green-700 px-3 py-1 rounded-full font-bold uppercase tracking-widest text-nowrap">In Motion</span>
-                    </div>
-                    <p class="text-xs text-gray-500 font-light leading-relaxed">Focus on Aly's widget deployment, Gary's knowledge training, and Larry's core Salesforce integration.</p>
-                </div>
-            </div>
-            <div class="flex gap-8 items-start relative opacity-40">
-                <div class="w-10 h-10 rounded-full bg-gray-200 text-gray-400 flex items-center justify-center flex-shrink-0 z-10 text-xs font-bold border-4 border-gray-50">2</div>
-                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 flex-grow text-nowrap">
-                    <h4 class="font-bold text-gray-600 mb-2 tracking-tight uppercase">Phase 2: CRM Mastery</h4>
-                    <p class="text-xs text-gray-400 font-light leading-relaxed">Expanding Larry's integrations for deep account retrieval and automated fulfilling of customer requests.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="bg-gray-900 text-gray-500 py-20 text-center border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center justify-center gap-16 mb-16">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-12 lg:gap-16 mb-16">
                 <!-- Bezaka Footer -->
                 <div class="flex items-center gap-3">
                     <img src="bezaka_logo_white.png" alt="Bezaka Logo" class="h-8 w-auto" onerror="this.src='https://via.placeholder.com/32x32?text=B'">
@@ -478,7 +453,7 @@
             </div>
             
             <p class="text-[9px] uppercase tracking-[0.4em] font-bold mb-8 text-gray-700">Updated as per Teams Call</p>
-            <div class="flex justify-center gap-12 text-[10px] font-bold text-gray-500 tracking-widest uppercase text-nowrap">
+            <div class="flex flex-wrap justify-center gap-8 lg:gap-12 text-[10px] font-bold text-gray-500 tracking-widest uppercase">
                 <a href="#" class="hover:text-white transition">Windsor : Bezaka</a>
                 <a href="#" class="hover:text-white transition">Friday Feb 20th</a>
             </div>
@@ -486,11 +461,7 @@
     </footer>
 
     <script>
-        function handleExportPDF() {
-            window.focus();
-            window.print();
-        }
-
+        // Smooth scroll for internal links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
