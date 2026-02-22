@@ -5,34 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Windsor AI Chat Agent | Strategic Proposal</title>
     
-    <!-- External Dependencies (Requires Internet Connection) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons (Fallback for FontAwesome) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
         
         :root {
             --windsor-blue: #00AEEF;
-            --windsor-grey: #6B6D70;
+            --windsor-navy: #1e3a8a;
             --bezaka-yellow: #FFC107;
-            --deep-blue: #1e3a8a;
         }
 
         body { 
             font-family: 'Inter', -apple-system, sans-serif; 
-            margin: 0;
-            padding: 0;
             scroll-behavior: smooth; 
         }
 
         .gradient-bg { 
-            background: #1e3a8a;
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); 
         }
 
-        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s ease; }
-        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
         .step-line::before { 
             content: ''; 
             position: absolute; 
@@ -43,460 +54,425 @@
             background: #e5e7eb; 
         }
 
-        @media (max-width: 768px) { .step-line::before { display: none; } }
+        @media (max-width: 768px) { 
+            .step-line::before { display: none; } 
+        }
         
         @media print {
-            nav, button, footer { display: none !important; }
+            nav, footer { display: none !important; }
             .gradient-bg { 
                 background: #1e3a8a !important; 
                 color: white !important;
                 -webkit-print-color-adjust: exact; 
                 print-color-adjust: exact;
             }
-            body { background: white; }
-            section { page-break-inside: avoid; }
-            .card-hover { border: 1px solid #eee !important; }
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-slate-50 text-slate-900 antialiased">
 
-    <!-- Header / Navigation -->
-    <nav class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-32 items-center">
-                <!-- Branding Area: Doubled Logos Only -->
-                <div class="flex items-center gap-10">
-                    <img src="bezaka_logo.png" alt="Bezaka Logo" class="h-20 w-auto" onerror="this.src='https://via.placeholder.com/80x80?text=Bezaka'">
-                    <div class="h-16 w-[1px] bg-gray-200"></div>
-                    <img src="windsor_logo.png" alt="Windsor Brokers Logo" class="h-16 w-auto" onerror="this.src='https://via.placeholder.com/240x64?text=Windsor'">
+            <div class="flex flex-col lg:flex-row justify-between items-center py-4 lg:h-28 gap-4">
+                <!-- Logos -->
+                <div class="flex items-center gap-6 lg:gap-8">
+                    <img src="bezaka_logo.png" alt="Bezaka" class="h-12 lg:h-16 w-auto" onerror="this.src='https://via.placeholder.com/80x80?text=Bezaka'">
+                    <div class="h-10 w-px bg-slate-200"></div>
+                    <img src="windsor_logo.png" alt="Windsor Brokers" class="h-10 lg:h-14 w-auto" onerror="this.src='https://via.placeholder.com/200x50?text=Windsor'">
                 </div>
 
-                <div class="hidden lg:flex space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
-                    <a href="#summary" class="hover:text-blue-600 transition">Summary</a>
-                    <a href="#team" class="hover:text-blue-600 transition">Team</a>
-                    <a href="#deliverables" class="hover:text-blue-600 transition text-nowrap">Project Scope</a>
-                    <a href="#timeline" class="hover:text-blue-600 transition">Timeline</a>
-                    <a href="#architecture" class="hover:text-blue-600 transition">Architecture</a>
-                    <a href="#rfi" class="hover:text-blue-600 transition">RFI</a>
+                <!-- Nav Links -->
+                <div class="flex flex-wrap justify-center gap-6 text-[10px] lg:text-xs font-bold uppercase tracking-widest text-slate-400">
+                    <a href="#summary" class="hover:text-blue-600 transition-colors">Summary</a>
+                    <a href="#team" class="hover:text-blue-600 transition-colors">The Team</a>
+                    <a href="#deliverables" class="hover:text-blue-600 transition-colors">Scope</a>
+                    <a href="#timeline" class="hover:text-blue-600 transition-colors">Timeline</a>
+                    <a href="#architecture" class="hover:text-blue-600 transition-colors">Ecosystem</a>
+                    <a href="#rfi" class="hover:text-blue-600 transition-colors">RFI</a>
                 </div>
-
-                <button onclick="handleExportPDF()" class="bg-blue-600 text-white px-5 py-2.5 rounded-full text-xs font-bold hover:bg-blue-700 shadow-lg transition">
-                    <i class="fas fa-file-pdf mr-2"></i> EXPORT PDF
-                </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header id="summary" class="gradient-bg text-white py-24 px-4 overflow-hidden relative">
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-[10px] font-bold tracking-widest uppercase mb-6 text-white">Strategic Client Proposal</span>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">AI-Driven Support Augmentation for Windsor Brokers</h1>
-            <p class="text-lg md:text-xl text-blue-100 mb-12 font-light max-w-2xl mx-auto">
-                Introducing a specialized AI architecture and team to maintain Windsor's gold-standard responsiveness globally.
+    <header id="summary" class="gradient-bg text-white py-20 lg:py-32 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <span class="inline-block px-4 py-1 bg-white/10 backdrop-blur-md rounded-full text-[10px] font-extrabold tracking-[0.2em] uppercase mb-8 border border-white/20">
+                Strategic Implementation Proposal
+            </span>
+            <h1 class="text-4xl lg:text-7xl font-black mb-8 leading-tight tracking-tight">
+                AI-Driven Support <br/>for Windsor Brokers
+            </h1>
+            <p class="text-lg lg:text-2xl text-blue-100/90 mb-12 font-light max-w-3xl mx-auto leading-relaxed">
+                Deploying a specialized AI architecture and dedicated expert team to maintain Windsor’s gold-standard responsiveness across all global entities.
             </p>
             
             <div class="flex flex-wrap justify-center gap-6">
-                <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10 w-40 text-center text-nowrap">
-                    <i class="fas fa-globe text-2xl text-blue-200 mb-2"></i>
-                    <div class="text-[9px] text-blue-200 uppercase font-bold mb-1 tracking-wider">Multi-Entity</div>
-                    <div class="font-bold text-sm text-white">Global Support</div>
+                <div class="glass-card p-6 rounded-3xl w-40 lg:w-48 text-center">
+                    <i class="fas fa-globe-americas text-3xl text-blue-200 mb-3"></i>
+                    <div class="text-[9px] text-blue-200 uppercase font-black tracking-widest mb-1">Scale</div>
+                    <div class="font-bold text-sm">Global Support</div>
                 </div>
-                <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/10 w-40 text-center text-nowrap">
-                    <i class="fas fa-bolt text-2xl text-blue-200 mb-2"></i>
-                    <div class="text-[9px] text-blue-200 uppercase font-bold mb-1 tracking-wider">KPI Targeted</div>
-                    <div class="font-bold text-sm text-white">Instant Response</div>
+                <div class="glass-card p-6 rounded-3xl w-40 lg:w-48 text-center">
+                    <i class="fas fa-bolt text-3xl text-blue-200 mb-3"></i>
+                    <div class="text-[9px] text-blue-200 uppercase font-black tracking-widest mb-1">Speed</div>
+                    <div class="font-bold text-sm">Instant KPI</div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- The Team Section -->
-    <section id="team" class="max-w-7xl mx-auto py-20 px-4">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl font-bold mb-4 uppercase tracking-wider text-gray-900">Meet Your AI Specialists</h2>
-            <p class="text-gray-500 text-sm font-light uppercase tracking-widest">Dedicated agents for Windsor's specific implementation</p>
+    <!-- The Team -->
+    <section id="team" class="max-w-7xl mx-auto py-24 px-6">
+        <div class="text-center mb-20">
+            <h2 class="text-xs font-black text-blue-600 uppercase tracking-[0.4em] mb-4">Core Implementation</h2>
+            <h3 class="text-3xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">Meet Your AI Specialists</h3>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-12">
-            <!-- Aly -->
-            <div class="flex flex-col items-center text-center">
-                <div class="mb-8 w-full">
-                    <img src="aly_avatar.png" alt="Aly Avatar" class="w-full h-auto max-w-sm mx-auto object-contain" onerror="this.src='https://via.placeholder.com/512x512?text=Aly+Avatar'">
+        <div class="grid md:grid-cols-3 gap-10">
+            <!-- Lexi -->
+            <div class="flex flex-col h-full group">
+                <div class="relative mb-6 rounded-[2.5rem] overflow-hidden bg-slate-100 aspect-square">
+                    <img src="Lexi_avatar.png" alt="Lexi" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.src='https://via.placeholder.com/512x512?text=Lexi'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent"></div>
                 </div>
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 card-hover w-full flex-grow">
-                    <h3 class="text-2xl font-bold mb-2 text-blue-900">Aly</h3>
-                    <p class="text-[10px] font-bold text-blue-500 uppercase tracking-[0.2em] mb-4">Customer Experience</p>
-                    <p class="text-gray-500 text-sm leading-relaxed">
-                        Responsible for delivering the front-facing chat window, ensuring a seamless customer journey to get the support they need efficiently.
-                    </p>
+                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 card-hover flex-grow flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-2xl font-bold text-slate-900">Lexi</h4>
+                            <span class="p-2 bg-blue-50 rounded-xl text-blue-600"><i class="fas fa-user-tie"></i></span>
+                        </div>
+                        <p class="text-[10px] font-black text-blue-500 uppercase tracking-widest mb-4">Customer Experience</p>
+                        <p class="text-slate-500 text-sm leading-relaxed">
+                            Driving the front-facing chat interface. Lexi ensures every customer journey is seamless, intuitive, and designed to resolve needs with zero friction.
+                        </p>
+                    </div>
                 </div>
             </div>
-            
+
             <!-- Larry -->
-            <div class="flex flex-col items-center text-center">
-                <div class="mb-8 w-full">
-                    <img src="larry_avatar.png" alt="Larry Avatar" class="w-full h-auto max-w-sm mx-auto object-contain" onerror="this.src='https://via.placeholder.com/512x512?text=Larry+Avatar'">
+            <div class="flex flex-col h-full group">
+                <div class="relative mb-6 rounded-[2.5rem] overflow-hidden bg-slate-100 aspect-square">
+                    <img src="Larry_avatar.png" alt="Larry" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.src='https://via.placeholder.com/512x512?text=Larry'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"></div>
                 </div>
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 card-hover w-full flex-grow">
-                    <h3 class="text-2xl font-bold mb-2 text-blue-900">Larry</h3>
-                    <p class="text-[10px] font-bold text-blue-500 uppercase tracking-[0.2em] mb-4">Infrastructure & Security</p>
-                    <p class="text-gray-500 text-sm leading-relaxed">
-                        Oversees the tech stack, various system integrations, and maintains high standards for cyber security across all data layers.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Gary -->
-            <div class="flex flex-col items-center text-center">
-                <div class="mb-8 w-full">
-                    <img src="gary_avatar.png" alt="Gary Avatar" class="w-full h-auto max-w-sm mx-auto object-contain" onerror="this.src='https://via.placeholder.com/512x512?text=Gary+Avatar'">
-                </div>
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 card-hover w-full flex-grow">
-                    <h3 class="text-2xl font-bold mb-2 text-blue-900">Gary</h3>
-                    <p class="text-[10px] font-bold text-blue-500 uppercase tracking-[0.2em] mb-4">Intelligence & Translation</p>
-                    <p class="text-gray-500 text-sm leading-relaxed">
-                        Manages language translation and the RAG knowledge feed to ensure relevant information is delivered instantly to global customers.
-                    </p>
+                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 card-hover flex-grow flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-2xl font-bold text-slate-900">Larry</h4>
+                            <span class="p-2 bg-slate-50 rounded-xl text-slate-600"><i class="fas fa-shield-halved"></i></span>
+                        </div>
+                        <p class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-4">Infrastructure & Security</p>
+                        <p class="text-slate-500 text-sm leading-relaxed">
+                            The architect of the tech stack and integration bridges. Larry maintains the security protocols and ensures data integrity across all system layers.
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Detailed Deliverables Section -->
-    <section id="deliverables" class="max-w-7xl mx-auto py-20 px-4 bg-gray-50 rounded-[4rem]">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl font-bold mb-4 uppercase tracking-wider text-gray-900">Detailed Deliverables by Module</h2>
-            <p class="text-gray-500 text-sm font-light uppercase tracking-widest">Concrete technical outcomes and implementation pillars</p>
-        </div>
-
-        <div class="grid lg:grid-cols-3 gap-8">
-            <!-- Module 1 -->
-            <div class="bg-white border border-gray-100 rounded-[2.5rem] p-10 shadow-sm relative overflow-hidden card-hover">
-                <div class="absolute top-0 right-0 p-6 opacity-5">
-                    <i class="fas fa-comments text-6xl text-blue-900"></i>
+            <!-- Jace -->
+            <div class="flex flex-col h-full group">
+                <div class="relative mb-6 rounded-[2.5rem] overflow-hidden bg-slate-100 aspect-square">
+                    <img src="Jace_avatar.png" alt="Jace" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.src='https://via.placeholder.com/512x512?text=Jace'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/40 to-transparent"></div>
                 </div>
-                <h4 class="text-xs font-black text-blue-500 uppercase tracking-[0.2em] mb-4">Module 1</h4>
-                <h3 class="text-xl font-bold text-blue-900 mb-6">Base Package: Salesforce Live Chat</h3>
-                <ul class="space-y-6">
-                    <li class="flex gap-4">
-                        <i class="fas fa-server text-blue-400 mt-1"></i>
-                        <p class="text-sm text-gray-600"><strong class="text-gray-900">Azure Instance Provisioning:</strong> Setup and configuration of Microsoft Azure App Service for .NET orchestration middleware.</p>
-                    </li>
-                    <li class="flex gap-4">
-                        <i class="fas fa-network-wired text-blue-400 mt-1"></i>
-                        <p class="text-sm text-gray-600"><strong class="text-gray-900">Security & Networking:</strong> Configuration of Azure Key Vault and implementation of VNet for Salesforce connectivity.</p>
-                    </li>
-                    <li class="flex gap-4">
-                        <i class="fas fa-code text-blue-400 mt-1"></i>
-                        <p class="text-sm text-gray-600"><strong class="text-gray-900">React UI Framework:</strong> Development of a custom, responsive chat window to replace legacy Salesforce Live Agent UI.</p>
-                    </li>
-                    <li class="flex gap-4">
-                        <i class="fas fa-user-check text-blue-400 mt-1"></i>
-                        <p class="text-sm text-gray-600"><strong class="text-gray-900">Human Escalation:</strong> Configuration of "Human-in-the-loop" handshake routing to the Salesforce Service Console.</p>
-                    </li>
-                    <li class="flex gap-4">
-                        <i class="fas fa-history text-blue-400 mt-1"></i>
-                        <p class="text-sm text-gray-600"><strong class="text-gray-900">State Management:</strong> Implementation of persistent chat history for the duration of the user session.</p>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Module 2 -->
-            <div class="bg-white border border-gray-100 rounded-[2.5rem] p-10 shadow-sm relative overflow-hidden card-hover">
-                <div class="absolute top-0 right-0 p-6 opacity-5">
-                    <i class="fas fa-language text-6xl text-blue-900"></i>
+                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 card-hover flex-grow flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <h4 class="text-2xl font-bold text-slate-900">Jace</h4>
+                            <span class="p-2 bg-indigo-50 rounded-xl text-indigo-600"><i class="fas fa-brain"></i></span>
+                        </div>
+                        <p class="text-[10px] font-black text-indigo-500 uppercase tracking-widest mb-4">Intelligence & Translation</p>
+                        <p class="text-slate-500 text-sm leading-relaxed">
+                            Master of the knowledge base. Jace manages the RAG (Retrieval-Augmented Generation) feeds and multi-language translation accuracy for global reach.
+                        </p>
+                    </div>
                 </div>
-                <h4 class="text-xs font-black text-blue-500 uppercase tracking-[0.2em] mb-4">Module 2</h4>
-                <h3 class="text-xl font-bold text-blue-900 mb-6">Multilingual Add-on (Microsoft Translator)</h3>
-                <ul class="space-y-6">
-                    <li class="flex gap-4">
-                        <i class="fas fa-sync-alt text-blue-400 mt-1"></i>
-                        <p class="text-sm text-gray-600"><strong class="text-gray-900">Real-time API Integration:</strong> Direct connection to Microsoft Translator API for high-speed, on-the-fly translation.</p>
-                    </li>
-                    <li class="flex gap-4">
-                        <i class="fas fa-globe-asia text-blue-400 mt-1"></i>
-                        <p class="text-sm text-gray-600"><strong class="text-gray-900">Language Support:</strong> Full localization support for <span class="font-bold">Farsi (RTL)</span> and <span class="font-bold">Malaysian</span>.</p>
-                    </li>
-                    <li class="flex gap-4">
-                        <i class="fas fa-toggle-on text-blue-400 mt-1"></i>
-                        <p class="text-sm text-gray-600"><strong class="text-gray-900">Translation Toggle:</strong> UI elements allowing both users and agents to view original and translated text simultaneously.</p>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Module 3 -->
-            <div class="bg-white border border-gray-100 rounded-[2.5rem] p-10 shadow-sm relative overflow-hidden card-hover">
-                <div class="absolute top-0 right-0 p-6 opacity-5">
-                    <i class="fas fa-brain text-6xl text-blue-900"></i>
-                </div>
-                <h4 class="text-xs font-black text-blue-500 uppercase tracking-[0.2em] mb-4">Module 3</h4>
-                <h3 class="text-xl font-bold text-blue-900 mb-6">AI Knowledgebase (Bezaka AI)</h3>
-                <ul class="space-y-6">
-                    <li class="flex gap-4">
-                        <i class="fas fa-robot text-blue-400 mt-1"></i>
-                        <p class="text-sm text-gray-600"><strong class="text-gray-900">Bezaka Engine Setup:</strong> Integration of the proprietary Bezaka.AI engine to serve as the primary response layer.</p>
-                    </li>
-                    <li class="flex gap-4">
-                        <i class="fas fa-database text-blue-400 mt-1"></i>
-                        <p class="text-sm text-gray-600"><strong class="text-gray-900">Context Retrieval:</strong> Logic to pull account history from Salesforce for personalized, context-aware AI answers.</p>
-                    </li>
-                    <li class="flex gap-4">
-                        <i class="fas fa-exclamation-triangle text-blue-400 mt-1"></i>
-                        <p class="text-sm text-gray-600"><strong class="text-gray-900">Escalation Triggers:</strong> Automated hand-off to Module 1 when AI confidence falls below the set threshold.</p>
-                    </li>
-                </ul>
             </div>
         </div>
     </section>
 
-    <!-- Phasing & Timeline Section -->
-    <section id="timeline" class="max-w-7xl mx-auto py-20 px-4">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl font-bold mb-4 uppercase tracking-wider text-gray-900">Project Phasing & Timeline</h2>
-            <p class="text-gray-500 text-sm font-light max-w-2xl mx-auto leading-relaxed">
-                The project is structured into three incremental modules over a <span class="font-bold text-blue-600">12-week period</span>. Windsor Brokers may elect to proceed with subsequent modules upon successful completion of the preceding phase.
-            </p>
-        </div>
+    <!-- Deliverables -->
+    <section id="deliverables" class="bg-slate-900 py-24 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h3 class="text-3xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">Modular Deliverables</h3>
+                <p class="text-slate-400 text-sm font-medium uppercase tracking-[0.2em]">Concrete outcomes and implementation pillars</p>
+            </div>
 
-        <div class="max-w-4xl mx-auto">
-            <div class="bg-white rounded-[3rem] shadow-xl overflow-hidden border border-gray-100">
-                <div class="gradient-bg px-10 py-6 text-white flex justify-between items-center">
-                    <h3 class="font-bold uppercase tracking-widest text-sm">Implementation Schedule</h3>
-                    <span class="bg-white/20 px-4 py-1 rounded-full text-xs font-black uppercase">Total: 12 Weeks</span>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Module 1 -->
+                <div class="bg-white/5 border border-white/10 rounded-[2.5rem] p-10 hover:bg-white/10 transition-all group">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-500 flex items-center justify-center text-white mb-8 shadow-lg shadow-blue-500/20">
+                        <i class="fas fa-message"></i>
+                    </div>
+                    <h4 class="text-blue-400 text-[10px] font-black uppercase tracking-widest mb-2">Module 01</h4>
+                    <h3 class="text-xl font-bold text-white mb-8">Salesforce Live Chat Base</h3>
+                    <ul class="space-y-6 text-sm text-slate-300">
+                        <li class="flex gap-4"><i class="fas fa-check-circle text-blue-500 mt-1"></i> <span>Azure App Service .NET Orchestration</span></li>
+                        <li class="flex gap-4"><i class="fas fa-check-circle text-blue-500 mt-1"></i> <span>Azure Key Vault & VNet Security</span></li>
+                        <li class="flex gap-4"><i class="fas fa-check-circle text-blue-500 mt-1"></i> <span>Custom React UI Widget</span></li>
+                        <li class="flex gap-4"><i class="fas fa-check-circle text-blue-500 mt-1"></i> <span>Human-in-the-loop Escalation</span></li>
+                    </ul>
                 </div>
-                <div class="p-10">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="border-b-2 border-gray-50">
-                                <th class="py-4 text-xs font-black text-gray-400 uppercase tracking-widest">Module</th>
-                                <th class="py-4 text-xs font-black text-gray-400 uppercase tracking-widest text-right">Duration</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="border-b border-gray-50 group hover:bg-gray-50 transition">
-                                <td class="py-6">
-                                    <div class="flex items-center gap-4">
-                                        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">1</div>
-                                        <div>
-                                            <div class="font-bold text-gray-900">Base Live Chat</div>
-                                            <div class="text-[10px] text-gray-400 uppercase font-medium">React UI & Azure Infrastructure</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="py-6 text-right font-black text-blue-900">5 Weeks</td>
-                            </tr>
-                            <tr class="border-b border-gray-50 group hover:bg-gray-50 transition">
-                                <td class="py-6">
-                                    <div class="flex items-center gap-4">
-                                        <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold">2</div>
-                                        <div>
-                                            <div class="font-bold text-gray-900">Multilingual Add-on</div>
-                                            <div class="text-[10px] text-gray-400 uppercase font-medium">Farsi & Malaysian API Integration</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="py-6 text-right font-black text-blue-900">2 Weeks</td>
-                            </tr>
-                            <tr class="border-b border-gray-50 group hover:bg-gray-50 transition">
-                                <td class="py-6">
-                                    <div class="flex items-center gap-4">
-                                        <div class="w-10 h-10 rounded-xl bg-green-50 text-green-600 flex items-center justify-center font-bold">3</div>
-                                        <div>
-                                            <div class="font-bold text-gray-900">Bezaka AI Integration</div>
-                                            <div class="text-[10px] text-gray-400 uppercase font-medium">Automated Knowledge & Escalation</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="py-6 text-right font-black text-blue-900">5 Weeks</td>
-                            </tr>
-                        </tbody>
-                    </table>
+
+                <!-- Module 2 -->
+                <div class="bg-white/5 border border-white/10 rounded-[2.5rem] p-10 hover:bg-white/10 transition-all group">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-500 flex items-center justify-center text-white mb-8 shadow-lg shadow-purple-500/20">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h4 class="text-purple-400 text-[10px] font-black uppercase tracking-widest mb-2">Module 02</h4>
+                    <h3 class="text-xl font-bold text-white mb-8">Multilingual Expansion</h3>
+                    <ul class="space-y-6 text-sm text-slate-300">
+                        <li class="flex gap-4"><i class="fas fa-check-circle text-purple-500 mt-1"></i> <span>MS Translator API Real-time Integration</span></li>
+                        <li class="flex gap-4"><i class="fas fa-check-circle text-purple-500 mt-1"></i> <span>Farsi (RTL) & Malaysian Support</span></li>
+                        <li class="flex gap-4"><i class="fas fa-check-circle text-purple-500 mt-1"></i> <span>Agent/User Dual-View Translation</span></li>
+                    </ul>
+                </div>
+
+                <!-- Module 3 -->
+                <div class="bg-white/5 border border-white/10 rounded-[2.5rem] p-10 hover:bg-white/10 transition-all group">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500 flex items-center justify-center text-white mb-8 shadow-lg shadow-emerald-500/20">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h4 class="text-emerald-400 text-[10px] font-black uppercase tracking-widest mb-2">Module 03</h4>
+                    <h3 class="text-xl font-bold text-white mb-8">Bezaka AI Core</h3>
+                    <ul class="space-y-6 text-sm text-slate-300">
+                        <li class="flex gap-4"><i class="fas fa-check-circle text-emerald-500 mt-1"></i> <span>Bezaka.AI Intelligence Layer</span></li>
+                        <li class="flex gap-4"><i class="fas fa-check-circle text-emerald-500 mt-1"></i> <span>Salesforce Account Context Retrieval</span></li>
+                        <li class="flex gap-4"><i class="fas fa-check-circle text-emerald-500 mt-1"></i> <span>Confidence-based Auto-Escalation</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Architecture Visual -->
-    <section id="architecture" class="bg-white py-20 px-4 border-y border-gray-100">
+    <section id="architecture" class="py-24 px-6 bg-white border-b border-slate-100">
         <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-2xl font-bold mb-4 uppercase tracking-wider text-gray-900">Technical Ecosystem</h2>
-            <p class="text-gray-500 text-sm font-light mb-16 uppercase tracking-widest">Architecture supporting Aly, Larry, and Gary</p>
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-4 tracking-tight">Technical Ecosystem</h2>
+            <p class="text-slate-500 text-sm font-medium mb-16 uppercase tracking-[0.2em]">The infrastructure supporting Lexi, Larry, and Jace</p>
             
-            <!-- Overall Security Layer Wrapper -->
-            <div class="relative p-8 lg:p-12 rounded-[4rem] border-4 border-dashed border-blue-100 bg-blue-50/30">
-                <!-- Security Label -->
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.3em] shadow-lg z-20">
-                    <i class="fas fa-shield-alt mr-2"></i> Larry's Integrated Security Layer
+            <div class="relative p-6 lg:p-16 rounded-[3rem] lg:rounded-[5rem] border-4 border-dashed border-blue-50 bg-blue-50/20">
+                <!-- Label -->
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.3em] shadow-xl z-20 whitespace-nowrap">
+                    <i class="fas fa-shield-halved mr-2"></i> Larry's Security Perimeter
                 </div>
 
-                <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4 relative z-10">
+                <div class="flex flex-col lg:flex-row items-stretch justify-center gap-8 lg:gap-12">
                     
-                    <!-- Frontend: React -->
-                    <div class="w-full lg:w-1/4">
-                        <div class="bg-white p-8 rounded-[2rem] border border-gray-200 flex flex-col items-center shadow-md">
-                            <img src="React_logo.png" alt="React Logo" class="h-16 mb-4 object-contain" onerror="this.src='https://via.placeholder.com/64x64?text=React'">
-                            <h4 class="font-bold text-gray-900 text-sm mb-1 uppercase tracking-widest text-nowrap">Aly's Workspace</h4>
-                            <p class="text-[9px] text-gray-400 font-medium uppercase">Custom React Widget</p>
+                    <!-- Frontend -->
+                    <div class="lg:w-1/4 flex flex-col justify-center">
+                        <div class="bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-xl relative group">
+                            <div class="absolute -top-4 -right-4 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
+                                <i class="fas fa-window-maximize"></i>
+                            </div>
+                            <img src="React_logo.png" alt="React" class="h-16 mx-auto mb-6 object-contain" onerror="this.src='https://via.placeholder.com/64x64?text=React'">
+                            <h4 class="font-bold text-slate-900 text-xs uppercase tracking-widest mb-2">Lexi's Frontend</h4>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase">Custom React UI Widget</p>
                         </div>
                     </div>
 
-                    <div class="hidden lg:block text-blue-200">
-                        <i class="fas fa-arrow-right text-2xl"></i>
+                    <div class="hidden lg:flex items-center text-blue-200">
+                        <i class="fas fa-chevron-right text-3xl"></i>
                     </div>
 
-                    <!-- AI Hub: Microsoft Azure + Bezaka Intelligence -->
-                    <div class="w-full lg:w-1/3">
-                        <div class="bg-white p-10 rounded-[3rem] shadow-xl border-2 border-blue-500/20 flex flex-col items-center relative overflow-hidden">
-                            <div class="absolute -right-10 -bottom-10 w-24 h-24 bg-blue-50 rounded-full opacity-50"></div>
+                    <!-- AI Core -->
+                    <div class="lg:w-1/3">
+                        <div class="bg-white p-10 rounded-[3rem] shadow-2xl border-2 border-blue-500/20 relative overflow-hidden h-full flex flex-col items-center justify-center">
+                            <div class="absolute top-0 right-0 p-6 opacity-10">
+                                <i class="fas fa-network-wired text-6xl"></i>
+                            </div>
                             
-                            <div class="flex items-center gap-4 mb-8">
-                                <img src="Azure_logo.png" alt="Microsoft Azure Logo" class="h-16 object-contain" onerror="this.src='https://via.placeholder.com/64x64?text=Azure'">
-                                <div class="h-12 w-[2px] bg-gray-100"></div>
-                                <img src="bezaka_logo.png" alt="Bezaka Logo" class="h-16 object-contain" onerror="this.src='https://via.placeholder.com/64x64?text=Bezaka'">
+                            <div class="flex items-center gap-6 mb-8">
+                                <img src="Azure_logo.png" alt="Azure" class="h-12 object-contain" onerror="this.src='https://via.placeholder.com/64x64?text=Azure'">
+                                <div class="h-10 w-px bg-slate-200"></div>
+                                <img src="bezaka_logo.png" alt="Bezaka" class="h-12 object-contain" onerror="this.src='https://via.placeholder.com/64x64?text=Bezaka'">
                             </div>
 
-                            <h4 class="font-black text-blue-900 text-lg mb-4 tracking-tight text-nowrap uppercase text-nowrap">Gary's AI Core</h4>
-                            <p class="text-[10px] text-blue-500 font-bold uppercase tracking-widest mb-6">Powered by Bezaka Intelligence</p>
+                            <h4 class="font-black text-slate-900 text-xl mb-2 tracking-tight uppercase">Jace's AI Hub</h4>
+                            <p class="text-[9px] text-blue-600 font-bold uppercase tracking-widest mb-8">Proprietary Bezaka Intelligence</p>
                             
-                            <div class="grid grid-cols-2 gap-3 w-full">
-                                <div class="bg-blue-50 py-2 rounded-xl text-[10px] font-bold text-blue-600 uppercase border border-blue-100">RAG Engine</div>
-                                <div class="bg-blue-50 py-2 rounded-xl text-[10px] font-bold text-blue-600 uppercase border border-blue-100">Translation</div>
+                            <div class="flex flex-wrap justify-center gap-3">
+                                <div class="px-4 py-2 bg-slate-50 rounded-xl text-[9px] font-bold text-slate-600 border border-slate-100 uppercase">RAG Engine</div>
+                                <div class="px-4 py-2 bg-slate-50 rounded-xl text-[9px] font-bold text-slate-600 border border-slate-100 uppercase">Translation</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="hidden lg:block text-blue-200">
-                        <i class="fas fa-arrow-right text-2xl"></i>
+                    <div class="hidden lg:flex items-center text-blue-200">
+                        <i class="fas fa-chevron-right text-3xl"></i>
                     </div>
 
-                    <!-- Backend: Salesforce Integration -->
-                    <div class="w-full lg:w-1/4 space-y-4">
-                        <div class="bg-white p-6 rounded-[2rem] border border-gray-200 flex items-center gap-4 shadow-md">
-                            <img src="Salesforce_logo.png" alt="Salesforce Logo" class="h-10 w-16 object-contain" onerror="this.src='https://via.placeholder.com/64x40?text=SF'">
+                    <!-- Backend -->
+                    <div class="lg:w-1/4 flex flex-col justify-center gap-4">
+                        <div class="bg-white p-6 rounded-[2rem] border border-slate-200 shadow-lg flex items-center gap-4">
+                            <img src="Salesforce_logo.png" alt="Salesforce" class="h-10 object-contain" onerror="this.src='https://via.placeholder.com/64x40?text=SF'">
                             <div class="text-left">
-                                <h4 class="font-bold text-gray-900 text-xs uppercase tracking-widest text-nowrap">Larry's Bridge</h4>
-                                <p class="text-[9px] text-gray-400">Salesforce Integration</p>
+                                <h4 class="font-bold text-slate-900 text-[10px] uppercase tracking-widest">Larry's Bridge</h4>
+                                <p class="text-[9px] text-slate-400">Salesforce API</p>
                             </div>
                         </div>
-                        <div class="bg-white p-6 rounded-[2rem] border border-gray-200 flex items-center gap-4 shadow-md">
-                            <div class="h-10 w-16 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 border border-blue-100">
-                                <i class="fas fa-shield-alt text-xl"></i>
+                        <div class="bg-white p-6 rounded-[2rem] border border-slate-200 shadow-lg flex items-center gap-4">
+                            <div class="w-10 h-10 bg-slate-900 rounded-xl flex items-center justify-center text-white">
+                                <i class="fas fa-lock text-sm"></i>
                             </div>
-                            <div class="text-left text-nowrap">
-                                <h4 class="font-bold text-gray-900 text-xs uppercase tracking-widest">Data Guard</h4>
-                                <p class="text-[9px] text-gray-400">Encrypted Layer</p>
+                            <div class="text-left">
+                                <h4 class="font-bold text-slate-900 text-[10px] uppercase tracking-widest">Encrypted Storage</h4>
+                                <p class="text-[9px] text-slate-400">TLS 1.3 / AES-256</p>
                             </div>
                         </div>
                     </div>
 
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section id="timeline" class="max-w-7xl mx-auto py-24 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white rounded-[3rem] shadow-2xl overflow-hidden border border-slate-100">
+                <div class="gradient-bg px-10 py-8 text-white flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div>
+                        <h3 class="font-black uppercase tracking-[0.3em] text-xs opacity-70 mb-1">Roadmap</h3>
+                        <div class="text-2xl font-bold">Implementation Schedule</div>
+                    </div>
+                    <span class="bg-white/20 backdrop-blur-md px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest">
+                        Total duration: 12 Weeks
+                    </span>
+                </div>
+                <div class="p-8 lg:p-12">
+                    <div class="space-y-4">
+                        <!-- Step 1 -->
+                        <div class="flex items-center justify-between p-6 bg-slate-50 rounded-3xl border border-slate-100 hover:border-blue-200 transition-colors">
+                            <div class="flex items-center gap-6">
+                                <div class="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center font-bold text-blue-600">01</div>
+                                <div>
+                                    <div class="font-bold text-slate-900 uppercase tracking-tight">Base Live Chat</div>
+                                    <p class="text-[10px] text-slate-400 font-medium uppercase mt-1">Infrastructure & Core UI</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-black text-slate-900">5 Weeks</div>
+                                <div class="text-[9px] text-blue-600 font-bold uppercase tracking-widest">Priority 1</div>
+                            </div>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="flex items-center justify-between p-6 bg-slate-50 rounded-3xl border border-slate-100 hover:border-purple-200 transition-colors">
+                            <div class="flex items-center gap-6">
+                                <div class="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center font-bold text-purple-600">02</div>
+                                <div>
+                                    <div class="font-bold text-slate-900 uppercase tracking-tight">Multilingual API</div>
+                                    <p class="text-[10px] text-slate-400 font-medium uppercase mt-1">Language Translation Layer</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-black text-slate-900">2 Weeks</div>
+                                <div class="text-[9px] text-purple-600 font-bold uppercase tracking-widest">Priority 2</div>
+                            </div>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="flex items-center justify-between p-6 bg-slate-50 rounded-3xl border border-slate-100 hover:border-emerald-200 transition-colors">
+                            <div class="flex items-center gap-6">
+                                <div class="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center font-bold text-emerald-600">03</div>
+                                <div>
+                                    <div class="font-bold text-slate-900 uppercase tracking-tight">Bezaka AI Core</div>
+                                    <p class="text-[10px] text-slate-400 font-medium uppercase mt-1">Intelligence & Automation</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-black text-slate-900">5 Weeks</div>
+                                <div class="text-[9px] text-emerald-600 font-bold uppercase tracking-widest">Priority 3</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- RFI Section -->
-    <section id="rfi" class="max-w-7xl mx-auto py-20 px-4">
-        <div class="bg-[#1e3a8a] rounded-[3rem] p-10 md:p-16 text-white relative overflow-hidden shadow-2xl">
-            <div class="absolute right-0 top-0 w-64 h-64 bg-blue-500 opacity-20 rounded-full blur-3xl -mr-20 -mt-20"></div>
+    <section id="rfi" class="max-w-7xl mx-auto py-24 px-6">
+        <div class="bg-blue-900 rounded-[4rem] p-12 lg:p-20 text-white relative overflow-hidden shadow-2xl">
+            <div class="absolute right-0 top-0 w-96 h-96 bg-blue-500/20 blur-3xl rounded-full -mr-32 -mt-32"></div>
             
-            <h2 class="text-3xl font-bold mb-4 uppercase">Request for Information (RFI)</h2>
-            <p class="text-blue-200 mb-12 text-sm max-w-xl font-light leading-relaxed">Inputs needed to empower our team and technical architecture.</p>
-            
-            <div class="grid md:grid-cols-2 gap-12 text-left border-t border-white/10 pt-10">
-                <div class="space-y-8">
-                    <h4 class="text-blue-300 text-[11px] font-black uppercase tracking-[0.3em] pb-3 text-nowrap">Volume & Performance</h4>
-                    <ul class="space-y-5 text-nowrap">
-                        <li class="flex items-start gap-4">
-                            <div class="mt-1 w-6 h-6 rounded-lg bg-blue-500 flex items-center justify-center flex-shrink-0"><i class="fas fa-check text-[10px]"></i></div>
-                            <span class="text-sm font-light text-blue-50">Peak/average hourly chat volumes for scaling.</span>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <div class="mt-1 w-6 h-6 rounded-lg bg-blue-500 flex items-center justify-center flex-shrink-0"><i class="fas fa-check text-[10px]"></i></div>
-                            <span class="text-sm font-light text-blue-50">Response benchmarks for Aly's window design.</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="space-y-8">
-                    <h4 class="text-blue-300 text-[11px] font-black uppercase tracking-[0.3em] pb-3 text-nowrap">Security & Data</h4>
-                    <ul class="space-y-5 text-nowrap">
-                        <li class="flex items-start gap-4">
-                            <div class="mt-1 w-6 h-6 rounded-lg bg-blue-500 flex items-center justify-center flex-shrink-0"><i class="fas fa-check text-[10px]"></i></div>
-                            <span class="text-sm font-light text-blue-50">Auth specs for Larry's security protocols.</span>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <div class="mt-1 w-6 h-6 rounded-lg bg-blue-500 flex items-center justify-center flex-shrink-0"><i class="fas fa-check text-[10px]"></i></div>
-                            <span class="text-sm font-light text-blue-50">Knowledge Base content for Gary's data feed.</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Roadmap Section -->
-    <section id="roadmap" class="max-w-4xl mx-auto py-20 px-4 text-center">
-        <h2 class="text-2xl font-bold mb-16 uppercase tracking-widest text-gray-900">Strategic Roadmap</h2>
-        
-        <div class="space-y-12 relative step-line text-left">
-            <div class="flex gap-8 items-start relative">
-                <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 z-10 text-xs font-bold shadow-xl border-4 border-gray-50">1</div>
-                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 flex-grow">
-                    <div class="flex justify-between items-center mb-4">
-                        <h4 class="font-bold text-gray-900 tracking-tight uppercase">Phase 1: Team Launch (Current)</h4>
-                        <span class="text-[10px] bg-green-100 text-green-700 px-3 py-1 rounded-full font-bold uppercase tracking-widest text-nowrap">In Motion</span>
+            <div class="relative z-10">
+                <h3 class="text-3xl lg:text-5xl font-black mb-6 tracking-tight">Request for Information</h3>
+                <p class="text-blue-200/80 mb-16 text-lg max-w-2xl font-light">Critical inputs required to synchronize our team with Windsor's internal data structures.</p>
+                
+                <div class="grid md:grid-cols-2 gap-16 border-t border-white/10 pt-12">
+                    <div>
+                        <h4 class="text-blue-300 text-[10px] font-black uppercase tracking-[0.4em] mb-8">Performance Metrics</h4>
+                        <ul class="space-y-6">
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-lg bg-blue-500/30 flex items-center justify-center text-[10px] mt-1"><i class="fas fa-check"></i></div>
+                                <p class="text-sm font-light">Expected hourly chat volume peaks across all entities.</p>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-lg bg-blue-500/30 flex items-center justify-center text-[10px] mt-1"><i class="fas fa-check"></i></div>
+                                <p class="text-sm font-light">Response time targets (SLA) for automated vs human hand-off.</p>
+                            </li>
+                        </ul>
                     </div>
-                    <p class="text-xs text-gray-500 font-light leading-relaxed">Focus on Aly's widget deployment, Gary's knowledge training, and Larry's core Salesforce integration.</p>
-                </div>
-            </div>
-            <div class="flex gap-8 items-start relative opacity-40">
-                <div class="w-10 h-10 rounded-full bg-gray-200 text-gray-400 flex items-center justify-center flex-shrink-0 z-10 text-xs font-bold border-4 border-gray-50">2</div>
-                <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 flex-grow text-nowrap">
-                    <h4 class="font-bold text-gray-600 mb-2 tracking-tight uppercase">Phase 2: CRM Mastery</h4>
-                    <p class="text-xs text-gray-400 font-light leading-relaxed">Expanding Larry's integrations for deep account retrieval and automated fulfilling of customer requests.</p>
+                    <div>
+                        <h4 class="text-blue-300 text-[10px] font-black uppercase tracking-[0.4em] mb-8">Data & Security</h4>
+                        <ul class="space-y-6">
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-lg bg-blue-500/30 flex items-center justify-center text-[10px] mt-1"><i class="fas fa-check"></i></div>
+                                <p class="text-sm font-light">Auth specs for Salesforce Live Agent API keys and OAuth.</p>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="w-6 h-6 rounded-lg bg-blue-500/30 flex items-center justify-center text-[10px] mt-1"><i class="fas fa-check"></i></div>
+                                <p class="text-sm font-light">Access to historical chat logs for Jace’s AI training layer.</p>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-500 py-20 text-center border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4">
+    <footer class="bg-slate-950 text-slate-500 py-24 text-center">
+        <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row items-center justify-center gap-16 mb-16">
-                <!-- Bezaka Footer -->
-                <div class="flex items-center gap-3">
-                    <img src="bezaka_logo_white.png" alt="Bezaka Logo" class="h-8 w-auto" onerror="this.src='https://via.placeholder.com/32x32?text=B'">
-                    <span class="text-xs font-bold text-white uppercase tracking-widest">Bezaka Consulting</span>
+                <div class="flex items-center gap-4">
+                    <img src="bezaka_logo_white.png" alt="Bezaka" class="h-8 w-auto opacity-100" onerror="this.src='https://via.placeholder.com/32x32?text=B'">
+                    <span class="text-[10px] font-black text-white uppercase tracking-[0.3em]">Bezaka Consulting</span>
                 </div>
-                
-                <!-- Windsor Footer -->
-                <div class="flex items-center gap-3 text-nowrap">
-                    <img src="windsor_logo_white.png" alt="Windsor Logo" class="h-6 w-auto opacity-80" onerror="this.src='https://via.placeholder.com/100x20?text=Windsor'">
-                    <span class="text-xs font-bold text-white uppercase tracking-widest opacity-60">Windsor Brokers</span>
+                <div class="flex items-center gap-4">
+                    <img src="Windsor_logo_white.png" alt="Windsor" class="h-6 w-auto opacity-50" onerror="this.src='https://via.placeholder.com/100x20?text=Windsor'">
+                    <span class="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em]">Strategic Partner</span>
                 </div>
             </div>
             
-            <p class="text-[9px] uppercase tracking-[0.4em] font-bold mb-8 text-gray-700">Proprietary & Confidential Strategic Partnership Proposal</p>
-            <div class="flex justify-center gap-12 text-[10px] font-bold text-gray-500 tracking-widest uppercase text-nowrap">
-                <a href="#" class="hover:text-white transition">Privacy Protocol</a>
-                <a href="#" class="hover:text-white transition">IT Compliance</a>
+            <div class="flex flex-wrap justify-center gap-12 text-[10px] font-black text-slate-600 tracking-[0.3em] uppercase mb-8">
+                <span>Updated Feb 20th</span>
+                <span>•</span>
+                <span>Confidential Proposal</span>
             </div>
+            <p class="text-[9px] text-slate-700 uppercase tracking-widest">© 2025 Bezaka AI Implementation Group</p>
         </div>
     </footer>
 
     <script>
-        function handleExportPDF() {
-            window.focus();
-            window.print();
-        }
-
+        // Smooth scroll for internal links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+                    const headerOffset = 100;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
