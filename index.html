@@ -45,6 +45,12 @@
                 radial-gradient(at 100% 0%, rgba(45, 212, 191, 0.15) 0px, transparent 50%);
         }
 
+        .connector-line {
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+            height: 2px;
+            width: 100%;
+        }
+
         @media print {
             nav, .cta-section { display: none !important; }
             body { background: white; color: black; }
@@ -64,6 +70,7 @@
 
                 <div class="hidden md:flex gap-10 text-xs font-bold uppercase tracking-widest text-slate-500">
                     <a href="#solutions" class="hover:text-blue-600 transition-colors">Solutions</a>
+                    <a href="#architecture" class="hover:text-blue-600 transition-colors">Ecosystem</a>
                     <a href="#expertise" class="hover:text-blue-600 transition-colors">The Squad</a>
                     <a href="#methodology" class="hover:text-blue-600 transition-colors">Methodology</a>
                     <a href="#contact" class="bg-slate-900 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition-all">Get in Touch</a>
@@ -84,7 +91,7 @@
             
             <div class="flex flex-wrap justify-center gap-4">
                 <a href="#solutions" class="px-8 py-4 bg-blue-600 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-blue-500 transition-all shadow-xl shadow-blue-600/20">View Our Services</a>
-                <a href="#expertise" class="px-8 py-4 bg-white/5 border border-white/10 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-white/10 transition-all">Meet the Team</a>
+                <a href="#architecture" class="px-8 py-4 bg-white/5 border border-white/10 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-white/10 transition-all">Technical Ecosystem</a>
             </div>
         </div>
     </header>
@@ -93,48 +100,182 @@
     <section id="solutions" class="py-24 px-6 max-w-7xl mx-auto">
         <div class="grid lg:grid-cols-3 gap-12">
             <!-- Pillar 1 -->
-            <div class="p-10 bg-white rounded-[3rem] shadow-sm border border-slate-100 card-hover">
-                <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl mb-8">
-                    <i class="fas fa-microchip"></i>
+            <div class="p-10 bg-white rounded-[3rem] shadow-sm border border-slate-100 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-6 opacity-10">
+                    <i class="fas fa-brain text-6xl"></i>
+                </div>
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <span class="text-[10px] font-black uppercase tracking-widest bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full">Jace's Domain</span>
                 </div>
                 <h3 class="text-2xl font-bold mb-4">AI Implementation</h3>
                 <p class="text-slate-500 leading-relaxed mb-6">
                     Deploying proprietary intelligence layers including RAG-based knowledge retrieval and automated decision engines to streamline operations.
                 </p>
                 <ul class="space-y-3 text-sm font-semibold text-slate-400 uppercase tracking-wider">
-                    <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-blue-500 rounded-full"></div> RAG Knowledge Extraction</li>
-                    <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-blue-500 rounded-full"></div> Natural Language Processing</li>
+                    <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-indigo-500 rounded-full"></div> RAG Knowledge Extraction</li>
+                    <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-indigo-500 rounded-full"></div> Natural Language Processing</li>
                 </ul>
             </div>
 
             <!-- Pillar 2 -->
-            <div class="p-10 bg-white rounded-[3rem] shadow-sm border border-slate-100 card-hover">
-                <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mb-8">
-                    <i class="fas fa-layer-group"></i>
+            <div class="p-10 bg-white rounded-[3rem] shadow-sm border border-slate-100 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-6 opacity-10">
+                    <i class="fas fa-network-wired text-6xl"></i>
+                </div>
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-14 h-14 bg-slate-100 text-slate-700 rounded-2xl flex items-center justify-center text-2xl">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <span class="text-[10px] font-black uppercase tracking-widest bg-slate-200 text-slate-800 px-3 py-1 rounded-full">Larry's Domain</span>
                 </div>
                 <h3 class="text-2xl font-bold mb-4">Systems Orchestration</h3>
                 <p class="text-slate-500 leading-relaxed mb-6">
                     Creating secure bridges between legacy CRMs and modern AI tools. We specialize in Azure architecture and secure API middleware.
                 </p>
                 <ul class="space-y-3 text-sm font-semibold text-slate-400 uppercase tracking-wider">
-                    <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div> CRM Integration (Salesforce)</li>
-                    <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div> Azure Infrastructure</li>
+                    <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-slate-700 rounded-full"></div> CRM Integration (Salesforce)</li>
+                    <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-slate-700 rounded-full"></div> Azure Infrastructure</li>
                 </ul>
             </div>
 
             <!-- Pillar 3 -->
-            <div class="p-10 bg-white rounded-[3rem] shadow-sm border border-slate-100 card-hover">
-                <div class="w-14 h-14 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-2xl mb-8">
-                    <i class="fas fa-globe"></i>
+            <div class="p-10 bg-white rounded-[3rem] shadow-sm border border-slate-100 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-6 opacity-10">
+                    <i class="fas fa-users text-6xl"></i>
                 </div>
-                <h3 class="text-2xl font-bold mb-4">Global Reach</h3>
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <span class="text-[10px] font-black uppercase tracking-widest bg-blue-100 text-blue-700 px-3 py-1 rounded-full">Lexi's Domain</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Experience & Global Reach</h3>
                 <p class="text-slate-500 leading-relaxed mb-6">
-                    Breaking language barriers with real-time translation layers and RTL support, ensuring your business speaks every customer's language.
+                    Designing seamless chat interfaces and breaking language barriers with real-time translation layers, ensuring your business speaks every customer's language.
                 </p>
                 <ul class="space-y-3 text-sm font-semibold text-slate-400 uppercase tracking-wider">
-                    <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-purple-500 rounded-full"></div> Multi-language Support</li>
-                    <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-purple-500 rounded-full"></div> RTL Localization</li>
+                    <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-blue-500 rounded-full"></div> User Experience Design</li>
+                    <li class="flex items-center gap-2"><div class="w-1.5 h-1.5 bg-blue-500 rounded-full"></div> RTL & Localization</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture & Integration Section -->
+    <section id="architecture" class="py-24 px-6 bg-slate-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-xs font-black text-blue-600 uppercase tracking-[0.4em] mb-4">The Ecosystem</h2>
+                <h3 class="text-3xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">Enterprise Architecture</h3>
+                <p class="mt-6 text-slate-500 max-w-2xl mx-auto font-light leading-relaxed">Our integrated stack connects your customer-facing touchpoints with deep organizational intelligence and secure data layers.</p>
+            </div>
+
+            <!-- Architecture Grid -->
+            <div class="relative p-8 lg:p-16 rounded-[4rem] border-2 border-slate-200 bg-white shadow-xl overflow-hidden">
+                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]"></div>
+                
+                <div class="grid lg:grid-cols-4 gap-8 relative z-10 items-stretch">
+                    
+                    <!-- 1. Frontend Layer -->
+                    <div class="flex flex-col gap-6">
+                        <div class="p-6 bg-slate-50 rounded-[2rem] border border-blue-200 h-full flex flex-col items-center text-center relative pt-10">
+                            <div class="absolute top-0 inset-x-0 h-1 bg-blue-500 rounded-t-[2rem]"></div>
+                            <div class="absolute -top-4 bg-blue-100 text-blue-700 text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full border border-blue-200 shadow-sm flex items-center gap-1.5">
+                                <i class="fas fa-user-circle"></i> Lexi
+                            </div>
+                            <div class="w-12 h-12 bg-blue-500 text-white rounded-xl flex items-center justify-center mb-6 shadow-lg">
+                                <i class="fab fa-react text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-xs uppercase tracking-widest mb-3">Client Interface</h4>
+                            <p class="text-[10px] text-slate-400 font-medium uppercase mb-4">React.js Framework</p>
+                            <p class="text-[11px] text-slate-500 leading-relaxed">Lightweight, responsive widgets deployed globally with real-time state synchronization.</p>
+                        </div>
+                    </div>
+
+                    <!-- 2. Orchestration Layer (Azure) -->
+                    <div class="flex flex-col gap-6">
+                        <div class="p-6 bg-slate-900 rounded-[2rem] border border-slate-700 h-full flex flex-col items-center text-center text-white relative pt-10">
+                            <div class="absolute top-0 inset-x-0 h-1 bg-slate-500 rounded-t-[2rem]"></div>
+                            <div class="absolute -top-4 bg-slate-800 text-slate-300 text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full border border-slate-700 shadow-sm flex items-center gap-1.5">
+                                <i class="fas fa-shield-alt"></i> Larry
+                            </div>
+                            <div class="w-12 h-12 bg-white/10 text-blue-400 rounded-xl flex items-center justify-center mb-6 border border-white/10">
+                                <i class="fas fa-cloud text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-white text-xs uppercase tracking-widest mb-3">Middleware Hub</h4>
+                            <p class="text-[10px] text-blue-400 font-black uppercase mb-4">Microsoft Azure</p>
+                            <p class="text-[11px] text-slate-400 leading-relaxed">Secure .NET/Node.js orchestration handling auth, Key Vault secrets, and VNet traffic management.</p>
+                        </div>
+                    </div>
+
+                    <!-- 3. Intelligence Layer (Bezaka AI) -->
+                    <div class="flex flex-col gap-6">
+                        <div class="p-6 bg-blue-600 rounded-[2rem] border border-blue-400 h-full flex flex-col items-center text-center text-white shadow-2xl shadow-blue-600/20 relative pt-10">
+                            <div class="absolute top-0 inset-x-0 h-1 bg-indigo-300 rounded-t-[2rem]"></div>
+                            <div class="absolute -top-4 bg-indigo-100 text-indigo-700 text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full border border-indigo-200 shadow-sm flex items-center gap-1.5">
+                                <i class="fas fa-brain"></i> Jace
+                            </div>
+                            <div class="w-12 h-12 bg-white text-blue-600 rounded-xl flex items-center justify-center mb-6 shadow-lg">
+                                <i class="fas fa-bolt text-xl"></i>
+                            </div>
+                            <h4 class="font-bold text-white text-xs uppercase tracking-widest mb-3">AI Core</h4>
+                            <p class="text-[10px] text-blue-200 font-black uppercase mb-4">Bezaka Intelligence</p>
+                            <p class="text-[11px] text-blue-50 leading-relaxed">RAG engine processing vector embeddings and real-time translation for context-aware responses.</p>
+                        </div>
+                    </div>
+
+                    <!-- 4. Data Layer -->
+                    <div class="flex flex-col gap-4">
+                        <div class="p-5 bg-slate-50 rounded-[1.5rem] border border-slate-100 flex items-center gap-4 group hover:bg-white transition-colors">
+                            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-[#00A1E0] shadow-sm border border-slate-100">
+                                <i class="fab fa-salesforce"></i>
+                            </div>
+                            <div class="text-left">
+                                <h5 class="text-[10px] font-black uppercase tracking-wider text-slate-900">Salesforce</h5>
+                                <p class="text-[9px] text-slate-400 uppercase">CRM Integration</p>
+                            </div>
+                        </div>
+                        <div class="p-5 bg-slate-50 rounded-[1.5rem] border border-slate-100 flex items-center gap-4 group hover:bg-white transition-colors">
+                            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-slate-600 shadow-sm border border-slate-100">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="text-left">
+                                <h5 class="text-[10px] font-black uppercase tracking-wider text-slate-900">Custom ERP</h5>
+                                <p class="text-[9px] text-slate-400 uppercase">Legacy Systems</p>
+                            </div>
+                        </div>
+                        <div class="p-5 bg-slate-50 rounded-[1.5rem] border border-slate-100 flex items-center gap-4 group hover:bg-white transition-colors">
+                            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-slate-600 shadow-sm border border-slate-100">
+                                <i class="fas fa-share-nodes"></i>
+                            </div>
+                            <div class="text-left">
+                                <h5 class="text-[10px] font-black uppercase tracking-wider text-slate-900">Webhooks</h5>
+                                <p class="text-[9px] text-slate-400 uppercase">External APIs</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Connectivity Details -->
+                <div class="mt-16 pt-8 border-t border-slate-100">
+                    <div class="grid md:grid-cols-3 gap-8 text-left">
+                        <div>
+                            <h4 class="text-[11px] font-black text-blue-600 uppercase tracking-[0.2em] mb-3">The Interface</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Lexi's frontend utilizes encrypted WebSockets to maintain persistent connections with the Azure hub, ensuring zero-latency chat experiences.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-[11px] font-black text-blue-600 uppercase tracking-[0.2em] mb-3">The Bridge</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Larry's security layer implements OAuth 2.0 and mutual TLS to protect bi-directional data flow between the AI Core and Salesforce CRM.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-[11px] font-black text-blue-600 uppercase tracking-[0.2em] mb-3">The Logic</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Jace's intelligence core retrieves historical account data from the CRM to personalize AI responses through Retrieval-Augmented Generation (RAG).</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -182,29 +323,54 @@
     </section>
 
     <!-- Methodology -->
-    <section id="methodology" class="py-32 px-6 max-w-5xl mx-auto">
-        <h2 class="text-3xl font-extrabold mb-16 text-center tracking-tight">How We Build</h2>
-        <div class="space-y-12">
-            <div class="flex gap-8 group">
-                <div class="w-16 h-16 rounded-3xl bg-slate-100 flex items-center justify-center font-black text-xl group-hover:bg-blue-600 group-hover:text-white transition-all">01</div>
-                <div>
-                    <h4 class="text-xl font-bold mb-2">Strategic Discovery</h4>
-                    <p class="text-slate-500">We analyze your current data silos, CRM capabilities, and customer pain points to design a bespoke AI roadmap.</p>
+    <section id="methodology" class="py-32 px-6 max-w-7xl mx-auto border-t border-slate-100">
+        <div class="text-center mb-24">
+            <h2 class="text-xs font-black text-blue-500 uppercase tracking-[0.4em] mb-4">The Process</h2>
+            <h3 class="text-3xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">How We Build</h3>
+            <p class="mt-6 text-slate-500 max-w-2xl mx-auto font-light leading-relaxed">A seamless handoff between our specialists ensures your enterprise transformation is secure, intelligent, and tailored to your users.</p>
+        </div>
+        
+        <div class="grid lg:grid-cols-3 gap-12 relative">
+            <!-- Connecting Line (Desktop only) -->
+            <div class="hidden lg:block absolute top-12 left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-indigo-100 via-slate-200 to-blue-100 z-0"></div>
+
+            <!-- Phase 1: Jace -->
+            <div class="relative z-10 flex flex-col items-center text-center group">
+                <div class="w-24 h-24 mb-6 rounded-full border-8 border-white shadow-xl overflow-hidden relative bg-indigo-50 transition-transform group-hover:-translate-y-2">
+                    <img src="Jace_avatar.png" alt="Jace" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all" onerror="this.src='https://via.placeholder.com/150x150?text=Jace'">
+                    <div class="absolute inset-0 bg-indigo-600/10 group-hover:bg-transparent transition-all"></div>
                 </div>
+                <div class="bg-indigo-50 text-indigo-700 text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">01. Discovery</div>
+                <h4 class="text-xl font-bold mb-3">Strategic Architecture</h4>
+                <p class="text-sm text-slate-500 leading-relaxed px-4">
+                    <strong>Jace</strong> kicks off the engagement by analyzing your current data silos, knowledge bases, and mapping out the RAG (Retrieval-Augmented Generation) pipeline.
+                </p>
             </div>
-            <div class="flex gap-8 group">
-                <div class="w-16 h-16 rounded-3xl bg-slate-100 flex items-center justify-center font-black text-xl group-hover:bg-emerald-600 group-hover:text-white transition-all">02</div>
-                <div>
-                    <h4 class="text-xl font-bold mb-2">Architecture & Implementation</h4>
-                    <p class="text-slate-500">Our team builds the secure orchestration layer, integrates AI core services, and develops the custom UI/UX.</p>
+
+            <!-- Phase 2: Larry -->
+            <div class="relative z-10 flex flex-col items-center text-center group">
+                <div class="w-24 h-24 mb-6 rounded-full border-8 border-white shadow-xl overflow-hidden relative bg-slate-100 transition-transform group-hover:-translate-y-2">
+                    <img src="Larry_avatar.png" alt="Larry" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all" onerror="this.src='https://via.placeholder.com/150x150?text=Larry'">
+                    <div class="absolute inset-0 bg-slate-600/10 group-hover:bg-transparent transition-all"></div>
                 </div>
+                <div class="bg-slate-100 text-slate-700 text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">02. Engineering</div>
+                <h4 class="text-xl font-bold mb-3">Systems Integration</h4>
+                <p class="text-sm text-slate-500 leading-relaxed px-4">
+                    <strong>Larry</strong> builds the secure orchestration layer, connecting the AI core to your legacy CRMs via Azure middleware, ensuring zero data leakage.
+                </p>
             </div>
-            <div class="flex gap-8 group">
-                <div class="w-16 h-16 rounded-3xl bg-slate-100 flex items-center justify-center font-black text-xl group-hover:bg-purple-600 group-hover:text-white transition-all">03</div>
-                <div>
-                    <h4 class="text-xl font-bold mb-2">Scale & Optimization</h4>
-                    <p class="text-slate-500">Continuous refinement of AI confidence thresholds and performance tuning to ensure long-term ROI.</p>
+
+            <!-- Phase 3: Lexi -->
+            <div class="relative z-10 flex flex-col items-center text-center group">
+                <div class="w-24 h-24 mb-6 rounded-full border-8 border-white shadow-xl overflow-hidden relative bg-blue-50 transition-transform group-hover:-translate-y-2">
+                    <img src="Lexi_avatar.png" alt="Lexi" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all" onerror="this.src='https://via.placeholder.com/150x150?text=Lexi'">
+                    <div class="absolute inset-0 bg-blue-600/10 group-hover:bg-transparent transition-all"></div>
                 </div>
+                <div class="bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">03. Experience</div>
+                <h4 class="text-xl font-bold mb-3">Scale & Optimization</h4>
+                <p class="text-sm text-slate-500 leading-relaxed px-4">
+                    <strong>Lexi</strong> deploys the user-facing widgets, optimizing the conversational UX, translating interfaces, and continually refining AI confidence thresholds.
+                </p>
             </div>
         </div>
     </section>
